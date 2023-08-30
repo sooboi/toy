@@ -5,7 +5,7 @@ import EditTodo from "../EditTodo/EditTodo";
 import styles from "./Todo.module.css";
 
 export default function Todo({ todo, onUpdate, onDelete, onEdit }) {
-  const { text, status } = todo;
+  const { text, status, id } = todo;
 
   const [toggle, setToggle] = useState(false);
 
@@ -27,11 +27,11 @@ export default function Todo({ todo, onUpdate, onDelete, onEdit }) {
       <input
         className={styles.checkbox}
         type="checkbox"
-        id="checkbox"
+        id={id}
         checked={status === "completed"}
         onChange={handleChange}
       />
-      <label className={styles.text} htmlFor="checkbox">
+      <label className={styles.text} htmlFor={id}>
         {text}
       </label>
       <span className={styles.icon}>
