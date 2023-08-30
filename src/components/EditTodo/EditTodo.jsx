@@ -15,7 +15,9 @@ export default function EditTodo({ text, handleToggle, onEdit, id }) {
   return (
     <div>
       <input type="text" name="text" value={editText} onChange={handleChange} />
-      <button onClick={handleEdit}>수정</button>
+      <button onClick={handleEdit} style={{ cursor: "pointer" }}>
+        수정
+      </button>
     </div>
   );
 }

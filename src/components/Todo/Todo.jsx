@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
 import EditTodo from "../EditTodo/EditTodo";
+import styles from "./Todo.module.css";
 
 export default function Todo({ todo, onUpdate, onDelete, onEdit }) {
   const { text, status } = todo;
@@ -22,20 +23,27 @@ export default function Todo({ todo, onUpdate, onDelete, onEdit }) {
   };
 
   return (
-    <li>
+    <li className={styles.todo}>
       <input
+        className={styles.checkbox}
         type="checkbox"
         id="checkbox"
         checked={status === "completed"}
         onChange={handleChange}
       />
-      <label htmlFor="checkbox">{text}</label>
-      <button onClick={handleDelete}>
-        <RiDeleteBack2Fill />
-      </button>
-      <button onClick={handleToggle}>
-        <FaEdit />
-      </button>
+      <label className={styles.text} htmlFor="checkbox">
+        {text}
+      </label>
+      <span className={styles.icon}>
+        <button className={styles.button} onClick={handleDelete}>
+          <RiDeleteBack2Fill />
+        </button>
+      </span>
+      <span className={styles.icon}>
+        <button className={styles.button} onClick={handleToggle}>
+          <FaEdit />
+        </button>
+      </span>
       {toggle && (
         <EditTodo
           text={text}
