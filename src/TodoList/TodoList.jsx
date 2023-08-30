@@ -27,6 +27,12 @@ export default function TodoList({ filter }) {
     setTodos(todos.filter((it) => it.id !== deleted.id));
   };
 
+  const handleEdit = (targetId, newText) => {
+    setTodos((todos) =>
+      todos.map((it) => (it.id === targetId ? { ...it, text: newText } : it))
+    );
+  };
+
   const filtered = getFilteredItems(todos, filter);
 
   return (
@@ -38,6 +44,7 @@ export default function TodoList({ filter }) {
             todo={it}
             onUpdate={handleUpdate}
             onDelete={handleDelete}
+            onEdit={handleEdit}
           />
         ))}
       </ul>
